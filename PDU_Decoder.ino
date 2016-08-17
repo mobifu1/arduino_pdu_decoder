@@ -21,7 +21,7 @@ void pdu_decode() {
 
   byte plain_bytes[256];
   int len = sizeof(pdu_bytes);
-  byte high_mask = 10000000;
+  byte high_mask = 128; // byte:10000000;
   byte low_mask;
   byte shift = 0;
   byte high_byte_new = 0;
