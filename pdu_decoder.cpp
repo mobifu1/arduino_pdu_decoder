@@ -9,8 +9,7 @@ String pdu_decode(String pdu_text) {
 }
 
 String pdu_decode(String pdu_text, uint8_t len) {
-  String plain_text;
-  byte plain_bytes[256];
+  char plain_bytes[256];
   byte high_mask = 128; // byte:10000000;
   byte low_mask;
   byte shift = 0;
@@ -49,11 +48,10 @@ String pdu_decode(String pdu_text, uint8_t len) {
     }
     i++;
   }
+  plain_bytes[y] = 0;
 
-  for (int i = 0; i < len ; i++) {
-    plain_text = plain_text  + char(plain_bytes[i]);
-  }
+  char *plain_text = new char[y];
+  strcpy(plain_text, plain_bytes);
   
   return plain_text;
 }
-
